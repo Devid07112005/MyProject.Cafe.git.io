@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phnom Penh Cafe - Coffee Shop In Phnom Penh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link id="imgicon" rel="icon" type="image/x-icon" href="https://png.pngtree.com/template/20191203/ourmid/pngtree-coffee-logo-design-vector-image_337940.jpg">
+  <style>
+    #imgicon{
+      border-radius: 50%;
+    }
+    .slide {
+      transition: opacity 1s ease-in-out;
+    }
+    .cart-panel {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    .cart-panel.open {
+      transform: translateX(0);
+    }
+    .slide-overlay {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-orange-50">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+  <div class="container flex items-center justify-between px-4 py-4 mx-auto">
+    <a href="http://127.0.0.1:5500/index.html" class="text-xl font-bold text-orange-800 md:text-2xl">Phnom Penh Cafe</a>
+
+    <!-- Desktop Navigation -->
+    <div class="items-center hidden space-x-6 md:flex">
+      <a href="#home" class="text-orange-800 hover:text-orange-600">Home</a>
+      <a href="#menu" class="text-orange-800 hover:text-orange-600">Menu</a>
+      <a href="#about" class="text-orange-800 hover:text-orange-600">About Us</a>
+      <a href="#contact" class="text-orange-800 hover:text-orange-600">Contact Us</a>
+      <button id="cart-btn" class="relative px-4 py-2 text-white bg-orange-600 rounded" type="button">
+        Cart
+        <span id="cart-count" class="absolute flex items-center justify-center hidden w-5 h-5 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">0</span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="flex items-center space-x-2 md:hidden">
+      <button id="cart-btn-mobile" class="relative px-3 py-2 text-sm text-white bg-orange-600 rounded" type="button">
+        Cart
+        <span id="cart-count-mobile" class="absolute flex items-center justify-center hidden w-4 h-4 text-xs text-white bg-red-500 rounded-full -top-1 -right-1">0</span>
+      </button>
+      <button id="mobile-menu-btn" class="p-2 text-orange-800 hover:text-orange-600" type="button">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden bg-white border-t border-gray-200 md:hidden">
+    <div class="px-4 py-2 space-y-2">
+      <a href="#home" class="block w-full py-2 text-left text-orange-800 hover:text-orange-600 mobile-nav-link">Home</a>
+      <a href="#menu" class="block w-full py-2 text-left text-orange-800 hover:text-orange-600 mobile-nav-link">Menu</a>
+      <a href="#about" class="block w-full py-2 text-left text-orange-800 hover:text-orange-600 mobile-nav-link">About Us</a>
+      <a href="#contact" class="block w-full py-2 text-left text-orange-800 hover:text-orange-600 mobile-nav-link">Contact Us</a>
+    </div>
+  </div>
+</nav>
+
+  <section id="home" class="relative h-screen pt-20 overflow-hidden">
+    <div class="absolute inset-0 bg-center bg-cover opacity-100 slide" style="background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&h=800&fit=crop');">
+      <div class="absolute inset-0 flex items-center justify-center slide-overlay">
+        <div class="px-4 text-center text-white">
+          <h1 class="mb-4 text-5xl font-bold drop-shadow-lg">Welcome to Phnom Penh Cafe</h1>
+          <p class="mb-8 text-xl drop-shadow-md">The best coffee and snacks in Phnom Penh</p>
+          <a href="#menu" class="px-8 py-3 text-lg text-white transition-colors bg-orange-600 rounded-lg shadow-lg hover:bg-orange-700">View Menu</a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-center bg-cover opacity-0 slide" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=800&fit=crop');">
+      <div class="absolute inset-0 flex items-center justify-center slide-overlay">
+        <div class="px-4 text-center text-white">
+          <h1 class="mb-4 text-5xl font-bold drop-shadow-lg">Fresh Daily Specials</h1>
+          <p class="mb-8 text-xl drop-shadow-md">Try our delicious cakes and pastries made fresh every morning</p>
+          <a href="#menu" class="px-8 py-3 text-lg text-white transition-colors bg-orange-600 rounded-lg shadow-lg hover:bg-orange-700">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" id="prev-slide" class="absolute z-10 p-3 text-white transition-all transform -translate-y-1/2 bg-black rounded-full left-4 top-1/2 bg-opacity-30 hover:bg-opacity-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button type="button" id="next-slide" class="absolute z-10 p-3 text-white transition-all transform -translate-y-1/2 bg-black rounded-full right-4 top-1/2 bg-opacity-30 hover:bg-opacity-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="absolute z-10 flex space-x-3 transform -translate-x-1/2 bottom-8 left-1/2">
+      <button type="button" class="w-3 h-3 bg-white rounded-full shadow-lg slide-indicator" data-slide="0"></button>
+      <button type="button" class="w-3 h-3 bg-white bg-opacity-50 rounded-full shadow-lg slide-indicator" data-slide="1"></button>
+    </div>
+  </section>
+
+  <section id="menu" class="px-4 py-16">
+    <div class="container mx-auto">
+      <h2 class="mb-8 text-4xl font-bold text-center text-orange-800">Our Menu</h2>
+      <div class="max-w-md mx-auto mb-8">
+        <input type="text" id="menu-search" placeholder="Search Menu..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600">
+      </div>
+      <div class="flex justify-center gap-4 mb-8">
+        <button data-category="All" class="px-6 py-2 text-white bg-orange-600 rounded-lg category-btn">
+          All
+        </button>
+        <button data-category="Coffee" class="px-6 py-2 text-gray-700 bg-gray-200 rounded-lg category-btn hover:bg-gray-300">
+          Coffee
+        </button>
+        <button data-category="Cakes" class="px-6 py-2 text-gray-700 bg-gray-200 rounded-lg category-btn hover:bg-gray-300">
+          Cakes
+        </button>
+        <button data-category="Snacks" class="px-6 py-2 text-gray-700 bg-gray-200 rounded-lg category-btn hover:bg-gray-300">
+          Snacks
+        </button>
+      </div>
+      <div id="products-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      </div>
+      <div id="no-products" class="hidden py-8 text-center">
+        <p class="text-gray-600">No products found. Try searching for something else.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="px-4 py-16 bg-orange-100">
+    <div class="container mx-auto text-center">
+      <h2 class="mb-8 text-4xl font-bold text-orange-800">About Us</h2>
+      <div class="max-w-2xl mx-auto">
+        <p class="mb-6 text-lg text-gray-700">Phnom Penh Cafe has been serving the best coffee and treats since 2010. 
+          We use only the finest ingredients and freshly roasted beans.
+        </p>
+        <p class="text-lg text-gray-700">
+          Our mission is to create a warm, welcoming place where people can enjoy 
+          great coffee and delicious food.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-16" id="contact">
+    <div class="container mx-auto">
+      <h2 class="mb-8 text-4xl font-bold text-center text-orange-800">Contact Us</h2>
+      <div class="grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-2">
+        <div>
+          <h3 class="mb-4 text-2xl font-bold">Get In Touch</h3>
+          <div class="space-y-4">
+            <p><strong>Address:</strong> 123E Chao Chao II, Porsenchey, Phnom Penh</p>
+            <p><strong>Phone:</strong> (+855) 96 209 9135</p>
+            <p><strong>Email:</strong> phanndevid2021@gmail.com</p>
+            <p><strong>Hours:</strong> Mon-Fri 7AM-8PM, Sat-Sun 8AM-9PM</p>
+          </div>
+        </div>
+        <div>
+          <form class="space-y-4" id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600">
+            <input type="email" id="email" placeholder="Your Email" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600">
+            <textarea id="message" placeholder="Your Message" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"></textarea>
+            <button type="submit" class="w-full py-3 text-white bg-orange-600 rounded-lg hover:bg-orange-700">Send Message</button>
+          </form>
+          <div id="form-success" class="hidden p-4 mt-4 text-green-700 bg-green-100 rounded-lg">
+            Thank you! Your message has been sent.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="py-8 text-center text-white bg-orange-800">
+    <p>&copy; 2025 Phnom Penh Cafe. All rights reserved.</p>
+  </footer>
+  <div class="fixed inset-0 z-50 hidden bg-black bg-opacity-50" id="cart-overlay"></div>
+  <div id="cart-panel" class="fixed top-0 right-0 z-50 h-full bg-white shadow-xl cart-panel w-96">
+    <div class="flex flex-col h-full">
+      <div class="flex items-center justify-between p-4 border-b">
+        <h2 class="text-xl font-bold">Your Cart</h2>
+        <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+          <span class="text-2xl">&times;</span>
+        </button>
+      </div>
+      <div class="flex-1 p-4 overflow-y-auto" id="cart-items">
+        
+      </div>
+      <div id="empty-cart-message" class="flex flex-col items-center justify-start h-full pt-6 text-center text-gray-500"">
+        <p>Your cart is empty</p>
+        <a href="#menu" class="text-orange-600 hover:underline">Continue Shopping</a>
+      </div>
+
+      <div id="cart-footer" class="hidden p-4 border-t">
+        <div class="flex justify-between mb-4">
+          <span class="font-bold">Total:</span>
+          <span id="cart-total" class="font-bold">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="w-full py-3 mb-2 text-white bg-orange-600 rounded-lg hover:bg-orange-700">
+          Checkout
+        </button>
+        <button id="clear-cart" class="w-full py-2 text-gray-700 bg-gray-300 rounded-lg hover:bg-gray-400">
+          Clear Cart
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
