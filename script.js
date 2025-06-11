@@ -5,7 +5,7 @@ const products = [
     name: "Espresso",
     category: "Coffee",
     price: 3.99,
-    image: "https://blogstudio.s3.theshoppad.net/coffeeheroau/ec178d83e5f597b162cda1e60cb64194.jpg",
+    image: "img/expresso.jpg",
     description: "Strong coffee shot",
   },
   {
@@ -13,7 +13,7 @@ const products = [
     name: "Cappuccino",
     category: "Coffee",
     price: 4.99,
-    image: "https://www.livingnorth.com/images/media/articles/food-and-drink/eat-and-drink/coffee.png?",
+    image: "img/cappucino.png",
     description: "Coffee with milk foam",
   },
   {
@@ -21,7 +21,7 @@ const products = [
     name: "Latte",
     category: "Coffee",
     price: 4.99,
-    image: "https://staresso.com/cdn/shop/articles/What_is_a_latte.jpg?v=1716606481",
+    image: "img/latte.webp",
     description: "Coffee with steamed milk",
   },
   {
@@ -29,7 +29,7 @@ const products = [
     name: "Americano",
     category: "Coffee",
     price: 3.99,
-    image: "https://fibercreme.com/wp-content/uploads/2024/10/Header.jpg",
+    image: "img/americano.jpg",
     description: "Coffee with hot water",
   },
   {
@@ -37,16 +37,33 @@ const products = [
     name: "Mocha",
     category: "Coffee",
     price: 5.49,
-    image: "https://ichef.bbc.co.uk/ace/standard/1600/food/recipes/the_perfect_mocha_coffee_29100_16x9.jpg.webp",
+    image: "img/mocha.webp",
     description: "Coffee with chocolate",
   },
+  {
+    id: 15,
+    name: "Flat White",
+    category: "Coffee",
+    price: 4.50,
+    image: "img/flatwhite.jpg",
+    description: "Espresso with steamed milk, less foam",
+  },
+  {
+    id: 16,
+    name: "Macchiato",
+    category: "Coffee",
+    price: 3.75,
+    image: "img/macchiato.jpg",
+    description: "Espresso with a dollop of foam",
+  },
+
   // Cakes
   {
     id: 6,
     name: "Chocolate Cake",
     category: "Cakes",
     price: 5.99,
-    image: "https://cambreabakes.com/wp-content/uploads/2024/05/chocolate-raspberry-cake-featured.jpg",
+    image: "img/chocolatecake.jpg",
     description: "Rich chocolate cake",
   },
   {
@@ -54,7 +71,7 @@ const products = [
     name: "Cheesecake",
     category: "Cakes",
     price: 5.99,
-    image: "https://www.seriouseats.com/thmb/Mykce8jNBk43y7fKyIjaPm2BB58=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2017__06__20170526-no-bake-cheesecake-vicky-wasik-18-89991c64ba544e19bc05c774c499438c.jpg",
+    image: "img/cheesecake.jpg",
     description: "Creamy cheesecake",
   },
   {
@@ -62,7 +79,7 @@ const products = [
     name: "Carrot Cake",
     category: "Cakes",
     price: 5.99,
-    image: "https://static01.nyt.com/images/2020/11/01/dining/Carrot-Cake-textless/Carrot-Cake-textless-videoSixteenByNineJumbo1600.jpg",
+    image: "img/carrotcake.jpg",
     description: "Moist carrot cake",
   },
   {
@@ -70,16 +87,33 @@ const products = [
     name: "Red Velvet",
     category: "Cakes",
     price: 6.49,
-    image: "https://img.freepik.com/premium-photo/slice-red-velvet-cake-with-fresh-strawberries-delicious-layered-dessert_102556-1984.jpg",
+    image: "img/redvelvet.avif",
     description: "Classic red velvet cake",
   },
+  {
+    id: 17,
+    name: "Lemon Tart",
+    category: "Cakes",
+    price: 5.75,
+    image: "img/lemontart.jpg",
+    description: "Tangy and sweet lemon tart",
+  },
+  {
+    id: 18,
+    name: "Banana Bread",
+    category: "Cakes",
+    price: 4.99,
+    image: "img/bananabread.jpg",
+    description: "Moist banana bread loaf",
+  },
+
   // Snacks
   {
     id: 10,
     name: "Croissant",
     category: "Snacks",
     price: 2.99,
-    image: "https://thefoodiebunch.com/wp-content/uploads/2022/08/The-Perfect-Croissant-Recipe.png",
+    image: "img/croissant.png",
     description: "Buttery croissant",
   },
   {
@@ -87,7 +121,7 @@ const products = [
     name: "Sandwich",
     category: "Snacks",
     price: 6.99,
-    image: "https://images.arla.com/recordid/15F33607-F6D9-4952-B6AA210D3033BF14/club-sandwich1.jpg?format=jpg&width=1200&height=630&mode=crop",
+    image: "img/sandwich.jpg",
     description: "Fresh sandwich",
   },
   {
@@ -95,7 +129,7 @@ const products = [
     name: "Muffin",
     category: "Snacks",
     price: 3.49,
-    image: "https://www.giallozafferano.com/images/269-26998/Chocolate-Chip-Muffins_650x433_wm.jpg",
+    image: "img/muffin.avif",
     description: "Freshly baked muffin",
   },
   {
@@ -103,7 +137,7 @@ const products = [
     name: "Cookies",
     category: "Snacks",
     price: 2.49,
-    image: "https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2022/02/Chocolate-chip-cookies-14.jpg",
+    image: "img/cookie.avif",
     description: "Homemade cookies",
   },
   {
@@ -111,10 +145,61 @@ const products = [
     name: "Brownie",
     category: "Snacks",
     price: 3.99,
-    image: "https://www.allrecipes.com/thmb/Bf_v7CGEIk1T0KOYsBeGdcs56Lo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AR-9599-Quick-Easy-Brownies-ddmfs-4x3-697df57aa40a45f8a7bdb3a089eee2e5.jpg",
+    image: "img/brownie.jpg",
     description: "Chocolate brownie",
   },
+  {
+    id: 19,
+    name: "Pretzel",
+    category: "Snacks",
+    price: 2.99,
+    image: "img/pretzel.webp",
+    description: "Soft salted pretzel",
+  },
+  {
+    id: 20,
+    name: "Granola Bar",
+    category: "Snacks",
+    price: 1.99,
+    image: "img/granola.jpg",
+    description: "Healthy granola bar",
+  },
+
+  // Tea
+  {
+    id: 21,
+    name: "Green Tea",
+    category: "Tea",
+    price: 3.50,
+    image: "img/greentea.jpg",
+    description: "Refreshing green tea",
+  },
+  {
+    id: 22,
+    name: "Black Tea",
+    category: "Tea",
+    price: 3.00,
+    image: "img/blacktea.webp",
+    description: "Classic black tea",
+  },
+  {
+    id: 23,
+    name: "Chai Latte",
+    category: "Tea",
+    price: 4.25,
+    image: "img/Chai-Latte.webp",
+    description: "Spiced tea with steamed milk",
+  },
+  {
+  id: 24,
+  name: "Affogato",
+  category: "Coffee",
+  price: 5.99,
+  image: "img/affogato.jpg",
+  description: "Vanilla ice cream topped with hot espresso."
+}
 ];
+
 
 // These variables must be declared globally
 let activeCategory = 'All';
@@ -311,7 +396,12 @@ function setupEvents() {
   });
 
   $('#checkout-btn').click(function () {
-    alert('Thank you for your order! Total: ' + $('#cart-total').text());
+    Swal.fire({
+      title: "Thank you for your order!",
+      text: "Total: " + $('#cart-total').text(),
+      icon: "success",
+      confirmButtonColor: "#eb590c"
+    });
     cart = [];
     updateCart();
     closeCart();
