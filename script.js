@@ -232,20 +232,23 @@ function showProducts() {
     $('#no-products').addClass('hidden');
     filteredProducts.forEach(product => {
       $('#products-grid').append(`
-        <div class="overflow-hidden transition-shadow bg-white rounded-lg shadow-md hover:shadow-lg">
-          <img src="${product.image}" alt="${product.name}" class="object-cover w-full h-72">
-          <div class="p-4">
-            <h3 class="mb-2 text-xl font-bold">${product.name}</h3>
-            <p class="mb-2 text-gray-600">${product.description}</p>
-            <div class="flex items-center justify-between">
-              <span class="text-2xl font-bold text-orange-600">$${product.price.toFixed(2)}</span>
-              <button class="px-4 py-2 text-white transition-colors bg-orange-600 rounded add-to-cart hover:bg-orange-700" data-id="${product.id}">
-                Add to Cart
-              </button>
+        <div data-aos="fade-up" data-aos-duration="1500">
+          <div class="overflow-hidden transition-shadow bg-white rounded-lg shadow-md hover:shadow-lg">
+            <img src="${product.image}" alt="${product.name}" class="object-cover w-full h-72 transition-transform duration-500 hover:scale-105">
+            <div class="p-4">
+              <h3 class="mb-2 text-xl font-bold">${product.name}</h3>
+              <p class="mb-2 text-gray-600">${product.description}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-orange-600">$${product.price.toFixed(2)}</span>
+                <button class="px-4 py-2 text-white transition-colors bg-orange-600 rounded add-to-cart hover:bg-orange-700" data-id="${product.id}">
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         </div>
       `);
+      AOS.refresh();
     });
   }
 }
@@ -278,7 +281,7 @@ function updateCart() {
       let cartItemHTML = `
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center">
-            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 mr-4 rounded object-cover">
+            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 mr-4 rounded object-cover ">
             <div>
               <h4 class="text-lg font-semibold">${item.name}</h4>
               <p class="text-sm text-gray-600">$${item.price.toFixed(2)} x ${item.quantity}</p>
@@ -415,7 +418,9 @@ function setupEvents() {
   });
 
   // Mobile events
-  $('#mobile-menu-btn').click(() => $('#mobile-menu').toggleClass('hidden'));
+  $('#mobile-menu-btn').click(() => {
+    $('#mobile-menu').stop(true, true).slideToggle(300);
+  });
   $('.mobile-nav-link').click(() => $('#mobile-menu').addClass('hidden'));
   $('#cart-btn-mobile').click(openCart);
 }
